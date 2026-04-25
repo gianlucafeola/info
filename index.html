@@ -583,25 +583,24 @@ footer{
   max-width:none;
 }
 
+
+/* VCV sequential reveal animation */
+.vcv-animated {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.vcv-animated.vcv-visible {
+  opacity: 1;
+  transform: none;
+}
+
 /* ── SCROLL REVEAL ── */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
 .reveal.visible{opacity:1;transform:none}
 
 /* ── RESPONSIVE ── */
 @media(max-width:600px){
-  .hero-vcv {
-    flex-direction:column;
-    width:100%;
-    border-radius:4px;
-    margin-bottom:28px;
-  }
-  .vcv-item {
-    border-right:none;
-    border-bottom:1px solid var(--rule);
-    padding:10px 16px;
-    justify-content:flex-start;
-  }
-  .vcv-item:last-child { border-bottom:none; }
   .hero-align-col { width:100%; }
 }
 @media(max-width:1000px){
@@ -1187,6 +1186,23 @@ function toggleFaq(btn) {
     }
   }, { threshold: 0.5 });
   obs.observe(canvas);
+})();
+
+// ── VCV SEQUENTIAL ANIMATION ──
+(function(){
+  const items = document.querySelectorAll('.vcv-animated');
+  if(!items.length) return;
+  const obs = new IntersectionObserver((entries) => {
+    if(entries[0].isIntersecting){
+      items.forEach((item, i) => {
+        setTimeout(() => {
+          item.classList.add('vcv-visible');
+        }, i * 280);
+      });
+      obs.disconnect();
+    }
+  }, { threshold: 0.5 });
+  obs.observe(document.getElementById('vcv-bar'));
 })();
 
 </script>
