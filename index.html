@@ -584,15 +584,17 @@ footer{
 }
 
 
-/* VCV sequential reveal animation */
-.vcv-animated {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity .4s ease, transform .4s ease;
-}
-.vcv-animated.vcv-visible {
-  opacity: 1;
-  transform: none;
+/* VCV sequential reveal animation — mobile only */
+@media(max-width:768px){
+  .vcv-animated {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .vcv-animated.vcv-visible {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ── SCROLL REVEAL ── */
@@ -1188,21 +1190,22 @@ function toggleFaq(btn) {
   obs.observe(canvas);
 })();
 
-// ── VCV SEQUENTIAL ANIMATION ──
+// ── VCV SEQUENTIAL ANIMATION (mobile only) ──
 (function(){
+  if(window.innerWidth > 768) return;
   const items = document.querySelectorAll('.vcv-animated');
   if(!items.length) return;
+  const bar = document.getElementById('vcv-bar');
+  if(!bar) return;
   const obs = new IntersectionObserver((entries) => {
     if(entries[0].isIntersecting){
       items.forEach((item, i) => {
-        setTimeout(() => {
-          item.classList.add('vcv-visible');
-        }, i * 280);
+        setTimeout(() => item.classList.add('vcv-visible'), i * 320);
       });
       obs.disconnect();
     }
-  }, { threshold: 0.5 });
-  obs.observe(document.getElementById('vcv-bar'));
+  }, { threshold: 0.3 });
+  obs.observe(bar);
 })();
 
 </script>
