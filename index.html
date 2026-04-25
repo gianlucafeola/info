@@ -591,11 +591,9 @@ footer{
 @media(max-width:768px){
   .hero-align-col { width:100%; }
   .hero-vcv {
-    flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     width: 100% !important;
-    justify-content: center;
-    align-items: center;
+    align-items: stretch;
     border: none !important;
     background: none !important;
     gap: 8px;
@@ -603,11 +601,12 @@ footer{
   .vcv-item {
     border: 1.5px solid #0A0A0A !important;
     border-radius: 4px !important;
-    padding: 8px 16px !important;
-    width: auto !important;
+    padding: 10px 16px !important;
+    width: 100% !important;
     flex: none !important;
     justify-content: center;
     background: transparent !important;
+    box-sizing: border-box;
   }
   .vcv-word {
     font-size: 13px;
