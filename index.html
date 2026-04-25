@@ -591,21 +591,28 @@ footer{
 @media(max-width:768px){
   .hero-vcv {
     flex-direction: column;
-    width: auto !important;
-    align-items: flex-start;
+    width: 100% !important;
+    align-items: center;
     border: none;
     background: none;
-    gap: 0;
+    gap: 8px;
   }
   .vcv-item {
     border-right: none !important;
-    border-bottom: 1px solid var(--rule);
-    padding: 10px 14px;
+    border-bottom: none !important;
+    padding: 6px 14px;
     width: auto;
     flex: none !important;
-    justify-content: flex-start;
+    justify-content: center;
   }
-  .vcv-item:last-child { border-bottom: none; }
+  .vcv-word {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+  .vcv-check {
+    width: 22px;
+    height: 22px;
+  }
 }
 
 /* ── SCROLL REVEAL ── */
