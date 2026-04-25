@@ -589,7 +589,20 @@ footer{
 
 /* ── RESPONSIVE ── */
 @media(max-width:600px){
-  .hero-vcv { transform:scale(0.78); transform-origin:left center; margin-bottom:32px; }
+  .hero-vcv {
+    flex-direction:column;
+    width:100%;
+    border-radius:4px;
+    margin-bottom:28px;
+  }
+  .vcv-item {
+    border-right:none;
+    border-bottom:1px solid var(--rule);
+    padding:10px 16px;
+    justify-content:flex-start;
+  }
+  .vcv-item:last-child { border-bottom:none; }
+  .hero-align-col { width:100%; }
 }
 @media(max-width:1000px){
   .hero{grid-template-columns:1fr}
