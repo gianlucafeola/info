@@ -587,18 +587,25 @@ footer{
 
 
 
-@keyframes vcvPop {
-  from { opacity:0; transform:translateY(10px); }
-  to   { opacity:1; transform:none; }
-}
+
 @media(max-width:768px){
-  .vcv-animated {
-    opacity:0;
-    animation: vcvPop .45s ease forwards;
+  .hero-vcv {
+    flex-direction: column;
+    width: auto !important;
+    align-items: flex-start;
+    border: none;
+    background: none;
+    gap: 0;
   }
-  .vcv-animated[style*="--vi:0"] { animation-delay: .7s; }
-  .vcv-animated[style*="--vi:1"] { animation-delay: 1.1s; }
-  .vcv-animated[style*="--vi:2"] { animation-delay: 1.5s; }
+  .vcv-item {
+    border-right: none !important;
+    border-bottom: 1px solid var(--rule);
+    padding: 10px 14px;
+    width: auto;
+    flex: none !important;
+    justify-content: flex-start;
+  }
+  .vcv-item:last-child { border-bottom: none; }
 }
 
 /* ── SCROLL REVEAL ── */
